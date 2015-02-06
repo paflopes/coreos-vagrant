@@ -1,0 +1,56 @@
+{
+    "num_instances": 1,
+    "update_channel": "stable",
+    "enable_serial_logging": false,
+    "expose_docker_tcp": 2375,
+    "share_home": false,
+    "virtualbox": {
+        "vb_gui": false,
+        "vb_memory": 1024,
+        "vb_cpus": 1
+    },
+    "folders": [
+        {
+            "src": "./data/postgres",
+            "uid": "103",
+            "gid": "106",
+            "dest": "/home/core/data/postgres"
+        },
+	{
+            "src": "./data/redis",
+            "uid": "102",
+            "gid": "103",
+            "dest": "/home/core/data/redis"
+        },
+        {
+            "src": "./data/mongo",
+            "uid": "104",
+            "gid": "65534",
+            "dest": "/home/core/data/mongo"
+        },
+        {
+            "src": "./data/nginx",
+            "uid": "root",
+            "gid": "root",
+            "dest": "/home/core/data/nginx"
+        },
+	{
+            "src": "./data/rabbitmq",
+            "uid": "103",
+            "gid": "105",
+            "dest": "/home/core/data/rabbitmq"
+        }
+
+    ],
+    "coreos_version": ">= 522.5.0",
+    "private_key_path": "~/.ssh/id_rsa",
+    "aditional_ports": [
+        27017,
+        5432,
+        6379,
+	8082,
+	5672,
+	15672,
+	8001
+    ]
+}
