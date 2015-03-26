@@ -1,6 +1,6 @@
 #cloud-config
 ssh_authorized_keys:
-  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCPx5y/iy8FNbmhfiaqK/gc6gatWZZ/0IqcQkYnsdI5HaR2s4mSY7HRxF/60lBL8oMeeURCoG+eSVOb7wwx16kVc+lJI0VoLcNg6ib26pZ07Z3Hj5fEZvn8s5B+YrE64e+kwkZI9VerOUXgI/jOEhp4AuW7BDCm8lDkHfZkL02SA0jv1SXUO5/UL/zimU+pIPmD4ABkgI+mElxfm3aZfnhO3+JYwP0xQ8+LWnttY8ghVuTZ3cSUIjC6xbGtgzZ+lpYap5ezjzr5KivhC7AMo4ZDaaqqiQ2TI4yg0wc23hZVwHnvyQ5LKeguFcWGle2KMDsVdat/ndeRUkG8yzaOPXV clayton@xdevel.com.br
+  - install you ssh public key
 coreos:
   etcd:
       #generate a new token for each unique cluster from https://discovery.etcd.io/new
@@ -53,5 +53,5 @@ write_files:
       owner: core:core
       permissions: 0644
       content: |
-        {"https://index.docker.io/v1/":{"auth":"Y2xheXRvbnNpbHZhOkNueHN5c3RlbTE=","email":"clayton@xdevel.com.br"}}
+        {your key on docker, use .dockercfg file in your home}
 
