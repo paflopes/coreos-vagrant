@@ -7,8 +7,6 @@ require 'json'
 Vagrant.require_version ">= 1.6.0"
 
 CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data")
-#xdevel - necessary to update current version of docker
-DOCKER_CLI = File.join(File.dirname(__FILE__) + "/docker-cli/1.4.1/", "docker")
 
 #xdevel - personal config on json devops.json
 XDEV_CONFIG = JSON.parse(File.read(File.join(File.dirname(__FILE__), 'devops.json')))
@@ -180,15 +178,11 @@ Vagrant.configure("2") do |config|
         config.vm.provision :file, :source => "#{CLOUD_CONFIG_PATH}", :destination => "/tmp/vagrantfile-user-data"
         config.vm.provision :shell, :inline => "mv /tmp/vagrantfile-user-data /var/lib/coreos-vagrant/", :privileged => true
         #xdevel - adding  docker client and  run daemon
-        if File.exist?(DOCKER_CLI)
-          config.vm.provision :file, :source => "#{DOCKER_CLI}", :destination => "/home/core/docker"
-          config.vm.provision :shell, :inline => "chmod a+x /home/core/docker"
-	        config.vm.provision :shell, :inline => "export PATH=/home/core:$PATH"
-        end
-
+        
         #xdevel - restart the services
-        config.vm.provision :shell, :inline => "systemctl start docker-local.service", :privileged => true
-        config.vm.provision :shell, :inline => "systemctl restart etcd.service", :privileged => true
+        #config.vm.provision :shell, :inline => "systemctl start docker-local.service", :privileged => true
+        #config.vm.provision :shell, :inline => "systemctl start etcd.service", :privileged => true
+        #config.vm.provision :shell, :inline => "systemctl start fleet.service", :privileged => true
 
 
         #xdevel - owner problem in folders - workarround this :( (descobri a besteira que cometi)
